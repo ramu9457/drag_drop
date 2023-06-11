@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ body{
+    background-color: #0b0423;
+ }
+
+ .head{
+    text-align: center;
+    color: #fff;
+    padding-top: 20px;
+ }
+
+
+.container {
+  width: 100%;
+  min-height: 80vh;
+  background-color: #0b0423;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.right,.left {
+    width: 300px;
+  min-height: 400px;
+  margin: 20px;
+  border: 2px dashed white;
+  border-radius: 20px;
+}
+
+.container, .right, .sec {
+    height: 150px;
+} 
+
+ .container, .right, #sec {
+background-image: url("C:\Users\user\Pictures\web\cat.jpg");
+}
+
+.item {
+    background-color:green;
+  height: 60px;
+  text-align: center;
+  margin: 30px;
+  color: white;
+  display: flex;
+  align-items: center; 
+  cursor: grab;
+  padding: 20px 20px 15px 20px;
+  margin-bottom: 5px;
+}
+
+.item:hover{
+    cursor: move;
+  background-color: darkmagenta;
+}
+
+.button{
+    height: 200px;
+    border: 1px solid black;
+    display: grid;   
+}
+
+#but {
+    position: absolute;
+    bottom: 100px;
+    padding: 15px 20px;
+    left: 47%;
+    border-radius: 10px;
+    font-size: 14px;
+} 
+
+.button :hover{
+    cursor: pointer;
+    background-color: blue;
+}
+
+
+
+  </style>
+
+</head>
+
+<body>
+  <h1 class="head">Drag and Drop </h1>
+  
+  <div id="container1" class="container" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <div class="right">
+    <div id="dragItem" class="item" draggable="true" ondragstart="drag(event)">DRAG THIS.</div>
+    <br>
+    <div id="dragItem" class="item"  id="sec" draggable="true" ondragstart="drag(event)">HELLO</div><br>
+    <div id="dragItem" class="item" draggable="true" ondragstart="drag(event)">😎😎❤️</div>
+   </div>
+   
+
+  <div class="left"></div>
+  </div>
+
+  <div id="container2" class="container" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+  </div> 
+   
+  <div class="button">
+    <button id="but">Reset</button>
+  </div>
+  
+
+<script> 
+ 
+    function allowDrop(event) {
+  event.preventDefault();
+}
+
+function drag(event) {
+  event.dataTransfer.setData("text", event.target.id);
+}
+
+function drop(event) {
+  event.preventDefault();
+  var data = event.dataTransfer.getData("text");
+  event.target.appendChild(document.getElementById(data));
+}  
+
+
+
+</script>
+
+
+</body>
+</html>
